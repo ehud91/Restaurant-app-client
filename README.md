@@ -14,12 +14,12 @@ This is a simple Node.js client application for a restaurant management system, 
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/restaurant-client.git
+   git clone https://github.com/your-username/Restaurant-app-client.git
 
 2. Navigate to the project directory:
 
     ```bash
-    cd restaurant-client
+    cd Restaurant-app-client
 
 
 3. Install dependencies:
