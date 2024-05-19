@@ -15,3 +15,19 @@ This is a simple Node.js client application for a restaurant management system, 
 
    ```bash
    git clone https://github.com/your-username/restaurant-client.git
+
+2. Navigate to the project directory:
+
+    ```bash
+    cd restaurant-client
+
+3. Install dependencies:
+
+    ```bash
+    npm install
+
+3. Usage
+    ## To run the application, execute the following command:
+
+    ```bash
+    Node index.js
