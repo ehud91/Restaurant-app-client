@@ -5,8 +5,11 @@ import { name,
          confirmYesNoAnswer,
          confirmOrder,
          displayUserOrder,
-         doCancelOrder } from './logic.js';
+         doCancelOrder,
+         generateNewOrder,
+         displayOrderSummery } from './logic.js';
 import { CONSTANTS } from './consts.js';
+import { getMenu, placeOrder } from './apis.js';
 
 ``
 
@@ -26,12 +29,23 @@ const main = async() => {
 
     await spinner(CONSTANTS.SPINNER_MESSAGE_LOADING_QUESTION, 2000);
 
+    const pickItemsIds = [];
     const pickItems = [];
     let yesNoAnswer = true;
+
+    const menu = await getMenu();
+
+
+    if (!menu || menu.length <= 0) {
+        console.log('Cannot display the menu, Something went wrong...');
+        return false;
+    }
+
     while (yesNoAnswer) {
 
-        const answerItem = await orderItem();
+        const { answerItem, answerItemId } = await orderItem(menu[0]);
 
+        pickItemsIds.push(answerItemId);
         pickItems.push(answerItem);
     
         await spinner(CONSTANTS.SPINNER_MESSAGE_LOADING_INPUT, 2000);
@@ -69,12 +83,24 @@ const main = async() => {
         return false;
     }
 
+    displayOrderSummery(pickItems);
+
+    const newOrder = generateNewOrder(menu[0], pickItemsIds);
+    const res = await placeOrder(newOrder);
+
+    if (!res) { 
+        console.log('Oops... something went wrong, We couldn\'t get your order...')
+        return false;
+    } 
+
     await spinner(CONSTANTS.SPINNER_MESSAGE_LOADING_INPUT, 2000);
 
     console.log();
     console.log(`${CONSTANTS.THANK_YOU_MESSAGE} ${answerName},`);
     console.log(`${CONSTANTS.STARTING_MESSAGE}`);
     console.log();
+
+    
 }
 
 
