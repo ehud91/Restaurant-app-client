@@ -21,13 +21,23 @@ This is a simple Node.js client application for a restaurant management system, 
     ```bash
     cd restaurant-client
 
+
 3. Install dependencies:
 
     ```bash
     npm install
 
 3. Usage
-    ## To run the application, execute the following command:
+    To run the application, execute the following command:
 
     ```bash
     Node index.js
+    
+    
+ Follow the prompts on the command-line interface to interact with the restaurant management system.
+
+## Dependencies
+* <a href="https://www.npmjs.com/package/@inquirer/prompts" >Inquirer</a>: A collection of common interactive command-line user interfaces.
+
+## License
+This project is licensed under the MIT License.
